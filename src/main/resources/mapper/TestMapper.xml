@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.gomeexcel.dao.TestDao">
+    <select id="queryAll" parameterType="com.example.gomeexcel.vo.ParameterPage"
+            resultType="com.example.gomeexcel.entity.TestEntity">
+        select * from user
+        <if test="pageSize!=null and pageNum!=null">
+            limit ${(pageNum - 1) * pageSize}, #{pageSize}
+        </if>
+    </select>
+
+    <select id="queryTotal" resultType="int">
+     select count(1) from user
+    </select>
+</mapper>
